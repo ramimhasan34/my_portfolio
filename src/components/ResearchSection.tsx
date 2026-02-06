@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FlaskConical, Microscope, Dna, Binary } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const researchInterests = [
   {
@@ -68,25 +69,34 @@ const ResearchSection = () => {
           ))}
         </div>
 
-        {/* Thesis highlight */}
+        {/* Learn More Button */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto mt-14"
+          className="text-center mt-10"
         >
-          <div className="card-glass rounded-xl p-8 border-l-4 border-l-primary">
-            <h3 className="text-sm font-heading font-semibold text-primary uppercase tracking-wider mb-3">
-              M.Sc Thesis
-            </h3>
-            <p className="text-secondary-foreground text-[15px] leading-relaxed italic">
-              "Green Synthesis of Antimicrobial Silver/Silver Chloride
-              Nanoparticles from the mixed extracts of C. Frutescens and T.
-              Indica Fruits with Antiproliferative Activity against Ehrlich
-              Ascites Carcinoma and MCF-7 Cells"
-            </p>
-          </div>
+          <Link
+            to="/research"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+          >
+            Learn More About My Work
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </Link>
         </motion.div>
       </div>
     </section>

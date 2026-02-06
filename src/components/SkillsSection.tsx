@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "Molecular Biology", level: 90 },
-  { name: "Structural Biology", level: 80 },
-  { name: "Bioinformatics", level: 85 },
-  { name: "Python Programming", level: 80 },
-  { name: "Nanoparticle Synthesis", level: 85 },
-  { name: "Cell Culture", level: 75 },
-  { name: "Data Analysis", level: 78 },
-  { name: "Scientific Writing", level: 82 },
+  { name: "Python", level: 85 },
+  { name: "PyMOL", level: 80 },
+  { name: "R", level: 82 },
+  { name: "SPSS", level: 78 },
+  { name: "Weka", level: 75 },
+  { name: "Photoshop", level: 80 },
 ];
 
 const SkillsSection = () => {

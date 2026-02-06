@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import profilePhoto from "@/assets/profile-photo.jpg";
 
 const AboutSection = () => {
   return (
@@ -13,20 +12,29 @@ const AboutSection = () => {
           className="grid md:grid-cols-5 gap-12 items-center max-w-5xl mx-auto"
         >
           {/* Photo */}
-          <div className="md:col-span-2 flex justify-center">
-            <div className="relative">
-              <div className="w-64 h-72 sm:w-72 sm:h-80 rounded-2xl overflow-hidden glow-primary">
+          <motion.div 
+            className="md:col-span-2 flex justify-center"
+            whileHover={{ y: -8 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="relative group">
+              {/* Gradient background glow */}
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-primary via-primary/50 to-primary/30 blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-300 -z-10" />
+              
+              {/* Main image container */}
+              <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-3xl overflow-hidden border-2 border-primary/40 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none z-10" />
                 <img
-                  src={profilePhoto}
+                  src="/img_1.jpeg"
                   alt="Ramim Hasan Naim"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              {/* Decorative border */}
-              <div className="absolute -inset-1 rounded-2xl border border-primary/20 -z-10" />
-              <div className="absolute -bottom-3 -right-3 w-24 h-24 rounded-xl border border-primary/10 -z-10" />
+
+              {/* Decorative floating elements */}
+              {/* Removed geometric shapes */}
             </div>
-          </div>
+          </motion.div>
 
           {/* Bio */}
           <div className="md:col-span-3">
@@ -35,26 +43,14 @@ const AboutSection = () => {
             </h2>
             <div className="w-12 h-1 bg-primary rounded-full mb-6" />
             <p className="text-secondary-foreground leading-relaxed text-[15px]">
-              Hello, this is Ramim Hasan Naim. Recently I have completed my M.Sc
-              in Biochemistry &amp; Molecular Biology from the University of
-              Rajshahi (RU). I accomplished my M.Sc thesis on nanoparticles
-              entitled{" "}
-              <em className="text-primary/80">
-                "Green Synthesis of Antimicrobial Silver/Silver Chloride
-                Nanoparticles from the mixed extracts of C. Frutescens and T.
-                Indica Fruits with Antiproliferative Activity against Ehrlich
-                Ascites Carcinoma and MCF-7 Cells"
-              </em>
-              .
+              Hello, this is Ramim Hasan Naim. I am currently pursuing my MSc in Computational Biomedicine at the University of Southern Denmark (SDU). I am passionate about leveraging computational tools and bioinformatics to solve complex biological problems and advance biomedical research.
             </p>
             <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4">
               I have a passion for{" "}
               <strong className="text-foreground">
-                Molecular Biology, Structural Biology &amp; Bioinformatics
+                Computational Biology, Bioinformatics &amp; Structural Biology
               </strong>
-              . I am skilled in Python programming language. I'm constantly being
-              persuaded to learn new skills. In the future, I want to pursue a
-              career in the field of research &amp; development.
+              . I am skilled in Python programming and various bioinformatics tools. I'm constantly driven to learn new technologies and methodologies. In the future, I aim to pursue a career in research &amp; development, focusing on computational approaches to biological challenges.
             </p>
           </div>
         </motion.div>

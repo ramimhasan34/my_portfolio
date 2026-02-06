@@ -3,19 +3,25 @@ import { GraduationCap } from "lucide-react";
 
 const educationData = [
   {
+    period: "2025 – 2027",
+    degree: "MSc in Computational Biomedicine",
+    institution: "University of Southern Denmark (SDU)",
+    level: "Master's",
+    color: "from-primary/20 to-primary/10",
+  },
+  {
     period: "2019 – 2022",
-    degree: "M.Sc (Thesis) in Biochemistry & Molecular Biology",
+    degree: "MSc (Thesis) in Biochemistry & Molecular Biology",
     institution: "University of Rajshahi, Rajshahi-6205",
+    level: "Master's",
+    color: "from-primary/15 to-primary/5",
   },
   {
     period: "2015 – 2019",
-    degree: "B.Sc in Biochemistry & Molecular Biology",
+    degree: "BSc in Biochemistry & Molecular Biology",
     institution: "University of Rajshahi, Rajshahi-6205",
-  },
-  {
-    period: "2011 – 2013",
-    degree: "Higher Secondary School Certificate (HSC)",
-    institution: "Agricultural University College, Mymensingh",
+    level: "Bachelor's",
+    color: "from-primary/20 to-primary/10",
   },
 ];
 
@@ -38,7 +44,7 @@ const EducationSection = () => {
 
         <div className="max-w-3xl mx-auto relative">
           {/* Timeline line */}
-          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-border" />
+          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-24 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-transparent" />
 
           {educationData.map((edu, index) => (
             <motion.div
@@ -55,22 +61,29 @@ const EducationSection = () => {
             >
               {/* Content */}
               <div className="flex-1 ml-16 md:ml-0">
-                <div className="card-glass rounded-xl p-6 hover:glow-primary transition-shadow duration-300">
-                  <span className="text-xs font-heading font-semibold text-primary uppercase tracking-wider">
-                    {edu.period}
-                  </span>
-                  <h3 className="text-lg font-heading font-semibold text-foreground mt-2 mb-1">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className={`bg-gradient-to-br ${edu.color} rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-300 backdrop-blur-sm`}
+                >
+                  <div className={`flex items-center ${index % 2 === 0 ? "md:justify-end" : "justify-start"} mb-3`}>
+                    <span className="text-xs font-date font-semibold text-primary uppercase tracking-wider py-1 px-3 bg-primary/10 rounded-full">
+                      {edu.period}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-heading font-bold text-foreground mb-2">
                     {edu.degree}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {edu.institution}
                   </p>
-                </div>
+                </motion.div>
               </div>
 
               {/* Timeline dot */}
-              <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-6 w-7 h-7 rounded-full bg-secondary border-2 border-primary flex items-center justify-center z-10">
-                <GraduationCap size={14} className="text-primary" />
+              <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10 hover:scale-110 transition-transform duration-300">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
+                  <GraduationCap size={16} className="text-background" />
+                </div>
               </div>
 
               {/* Spacer for alternating layout */}

@@ -39,13 +39,10 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <p className="text-lg sm:text-xl font-heading font-medium text-primary mb-3 italic">
-            M.Sc (Thesis)
-          </p>
-          <p className="text-sm sm:text-base text-muted-foreground mb-1">
-            Department of Biochemistry &amp; Molecular Biology
+            MSc, Computational Biomedicine
           </p>
           <p className="text-sm sm:text-base text-muted-foreground">
-            University of Rajshahi, Rajshahi, Bangladesh
+            University of Southern Denmark (SDU), Odense, Denmark
           </p>
         </motion.div>
 

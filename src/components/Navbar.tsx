@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Education", href: "#education" },
   { label: "Research", href: "#research" },
+  { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
+  { label: "Blog", href: "/blog", isExternal: true },
   { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -33,21 +37,42 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#home" className="text-xl font-heading font-bold text-primary tracking-wide">
-          RAMIM
-        </a>
+        <Link to="/" className="flex items-center gap-1">
+          <img src="/Logo.png" alt="Logo" className="h-[18px] w-[18px]" />
+          <span className="text-xl font-heading font-bold text-primary tracking-wide">
+            RAMIM
+          </span>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.isExternal ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-bold text-white/50 hover:text-primary transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ) : isHomePage ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-bold text-white/50 hover:text-primary transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                to={`/${link.href}`}
+                className="text-sm font-bold text-white/50 hover:text-primary transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -70,16 +95,36 @@ const Navbar = () => {
             className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border"
           >
             <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-2"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.isExternal ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm font-bold text-white/50 hover:text-primary transition-colors py-2"
+                  >
+                    {link.label}
+                  </Link>
+                ) : isHomePage ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm font-bold text-white/50 hover:text-primary transition-colors py-2"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    to={`/${link.href}`}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm font-bold text-white/50 hover:text-primary transition-colors py-2"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </div>
           </motion.div>
         )}
