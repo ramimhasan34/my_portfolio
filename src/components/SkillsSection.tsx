@@ -1,13 +1,20 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "Python", level: 85 },
-  { name: "PyMOL", level: 80 },
-  { name: "R", level: 82 },
-  { name: "SPSS", level: 78 },
+  { name: "Python", level: 75 },
+  { name: "PyMOL", level: 75 },
+  { name: "R", level: 75 },
   { name: "Weka", level: 75 },
-  { name: "Photoshop", level: 80 },
+  { name: "SPSS", level: 75 },
+  { name: "Photoshop", level: 75 },
 ];
+
+const getSkillTier = (level: number) => {
+  if (level >= 85) return "Expert";
+  if (level >= 80) return "Advanced";
+  if (level >= 70) return "Proficient";
+  return "Familiar";
+};
 
 const SkillsSection = () => {
   return (
@@ -40,7 +47,7 @@ const SkillsSection = () => {
                   {skill.name}
                 </span>
                 <span className="text-xs text-muted-foreground">
-                  {skill.level}%
+                  {getSkillTier(skill.level)}
                 </span>
               </div>
               <div className="h-2 rounded-full bg-secondary overflow-hidden">

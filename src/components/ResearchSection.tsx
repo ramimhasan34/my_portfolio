@@ -38,7 +38,7 @@ const ResearchSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <h2 className="text-3xl font-heading font-bold text-foreground mb-2">
             Research <span className="text-gradient">Interests</span>
@@ -54,10 +54,10 @@ const ResearchSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="card-glass rounded-xl p-6 text-center hover:glow-primary transition-all duration-300 group"
+              className="card-glass rounded-xl p-4 text-center hover:glow-primary transition-all duration-300 group"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                <item.icon size={26} className="text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
+                <item.icon size={22} className="text-primary" />
               </div>
               <h3 className="text-base font-heading font-semibold text-foreground mb-2">
                 {item.title}
@@ -75,13 +75,13 @@ const ResearchSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-10"
+          className="text-center mt-6"
         >
           <Link
             to="/research"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
           >
-            Learn More About My Work
+            Learn more about my work
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

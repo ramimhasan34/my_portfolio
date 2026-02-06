@@ -11,7 +11,7 @@ const educationData = [
   },
   {
     period: "2019 – 2022",
-    degree: "MSc (Thesis) in Biochemistry & Molecular Biology",
+    degree: "MSc in Biochemistry & Molecular Biology",
     institution: "University of Rajshahi, Rajshahi-6205",
     level: "Master's",
     color: "from-primary/15 to-primary/5",
@@ -34,7 +34,7 @@ const EducationSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-3xl font-heading font-bold text-foreground mb-2">
             <span className="text-gradient">Education</span>
@@ -53,7 +53,7 @@ const EducationSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
               viewport={{ once: true, margin: "-50px" }}
-              className={`relative flex items-start gap-6 mb-12 md:mb-16 ${
+              className={`relative flex items-start gap-6 mb-8 md:mb-10 ${
                 index % 2 === 0
                   ? "md:flex-row md:text-right"
                   : "md:flex-row-reverse md:text-left"

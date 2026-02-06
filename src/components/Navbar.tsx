@@ -9,8 +9,8 @@ const navLinks = [
   { label: "Research", href: "#research" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
-  { label: "Blog", href: "/blog", isExternal: true },
   { label: "Contact", href: "#contact" },
+  { label: "Blog", href: "/blog", isExternal: true },
 ];
 
 const Navbar = () => {
