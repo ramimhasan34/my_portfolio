@@ -62,7 +62,7 @@ The future of bioinformatics lies in integrating multi-omics data, improving pre
     category: "Higher Studies",
     content: `An overview of studying in Denmark, exploring academic culture, research opportunities, student life, and what international students should know before starting their journey.
 
-  Denmark has become an attractive destination for higher education due to its strong research environment, innovative teaching methods, and focus on work-life balance. This post shares personal insights into navigating the Danish education system, adapting to academic expectations, and making the most of student life abroad.`,
+Denmark has become an attractive destination for higher education due to its strong research environment, innovative teaching methods, and focus on work-life balance. This post shares personal insights into navigating the Danish education system, adapting to academic expectations, and making the most of student life abroad.`,
   },
 ];
 
