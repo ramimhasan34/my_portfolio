@@ -1,14 +1,24 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, FlaskConical, Microscope, Dna, Binary } from "lucide-react";
+import { ArrowLeft, ArrowUp, FlaskConical, Microscope, Dna, Binary, BookOpen, ExternalLink, Calendar, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const ResearchDetails = () => {
+  const conferencesRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const scrollToConferences = () => {
+    conferencesRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -21,7 +31,7 @@ const ResearchDetails = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-12"
+            className="mb-12 relative"
           >
             <Link 
               to="/" 
@@ -30,17 +40,31 @@ const ResearchDetails = () => {
               <ArrowLeft size={18} />
               <span>Back to Home</span>
             </Link>
+
+            {/* Conference Gallery Button */}
+            <motion.button
+              onClick={scrollToConferences}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="fixed top-24 right-6 inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl z-50"
+            >
+              <Sparkles size={18} />
+              <span>Check my conference gallery</span>
+            </motion.button>
             
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4">
               Research <span className="text-gradient">Works</span>
             </h1>
             <div className="w-16 h-1 bg-primary rounded-full mb-4" />
             <p className="text-lg text-muted-foreground max-w-3xl">
-              Detailed overview of my research interests, works, and contributions in biochemistry, molecular biology, and computational biomedicine.
+              A summary of my research works and current research interests, highlighting key projects, publications, and scientific contributions.
             </p>
           </motion.div>
 
-          {/* MSc Thesis Section */}
+          {/* Publications Section */}
           <motion.section
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,10 +72,154 @@ const ResearchDetails = () => {
             className="mb-16"
           >
             <div className="card-glass rounded-xl p-8 border-l-4 border-l-primary">
+              <div className="flex items-center gap-3 mb-6">
+                <BookOpen className="text-primary" size={28} />
+                <h2 className="text-2xl font-heading font-bold text-foreground">
+                  Publications
+                </h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-primary mb-3">
+                    Biosynthesis, antimicrobial and in vitro antiproliferative activities of silver/silver chloride nanoparticles from mixed fruit extracts of Capsicum frutescens and Tamarindus indica
+                  </h3>
+                  
+                  <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5">
+                      ✅ Peer-Reviewed Article
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      📘 Journal: ScienceDirect (Elsevier)
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      📅 Published: 2024
+                    </span>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-sm text-secondary-foreground">
+                      <span className="text-foreground">👥 Authors:</span> <span className="font-bold text-foreground">Ramim Hasan Naim</span>, Md. Belal Uddin, Syed Rashel Kabir, A. K. M. Asaduzzaman, Ranajit Kumar Shaha, Imtiaj Hasan
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://www.sciencedirect.com/science/article/pii/S2772753X24001692"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all duration-300 text-sm font-medium"
+                  >
+                    <ExternalLink size={16} />
+                    🔗 Read Online: ScienceDirect Article
+                  </a>
+
+                  <div className="mt-6 p-4 bg-background/50 rounded-lg border border-border">
+                    <h4 className="text-sm font-semibold text-foreground mb-2">Abstract:</h4>
+                    <p className="text-sm text-secondary-foreground leading-relaxed">
+                      This study presents an eco-friendly approach to synthesizing silver/silver chloride nanoparticles using mixed fruit extracts, demonstrating significant antimicrobial properties and antiproliferative activities against cancer cells.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Research Interests Detailed */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mb-16"
+          >
+            <h2 className="text-3xl font-heading font-bold text-foreground mb-8">
+              Research <span className="text-gradient">Interests</span>
+            </h2>
+
+            <div className="space-y-8">
+              {/* Bioinformatics */}
+              <div className="card-glass rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Binary size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold text-foreground">
+                    Bioinformatics & Computational Biology
+                  </h3>
+                </div>
+                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
+                  Computational approaches are essential for modern biological research. I am developing skills in:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
+                  <li>Sequence analysis and genomic data interpretation</li>
+                  <li>Transcriptomics and proteomics data analysis</li>
+                  <li>Machine learning applications in biology</li>
+                  <li>Development of bioinformatics pipelines using Python</li>
+                  <li>Phylogenetic analysis and evolutionary studies</li>
+                  <li>Systems biology approaches to understand complex biological networks</li>
+                  <li>Integration of multi-omics data</li>
+                </ul>
+              </div>
+
+              {/* Structural Biology */}
+              <div className="card-glass rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Microscope size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold text-foreground">
+                    Structural Biology & Molecular Modeling
+                  </h3>
+                </div>
+                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
+                  Structure-function relationships are crucial for understanding biological systems. My interests include:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
+                  <li>Three-dimensional structure determination of proteins</li>
+                  <li>Molecular dynamics simulations</li>
+                  <li>Structure-based drug design and virtual screening</li>
+                  <li>Protein folding and misfolding mechanisms</li>
+                  <li>Enzyme catalysis and inhibition studies</li>
+                  <li>Computational prediction of protein structures using tools like AlphaFold</li>
+                </ul>
+              </div>
+
+              {/* Molecular Biology */}
+              <div className="card-glass rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Dna size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold text-foreground">
+                    Molecular Biology & Gene Expression
+                  </h3>
+                </div>
+                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
+                  Understanding molecular mechanisms that govern biological processes is central to my research interests:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
+                  <li>Gene expression regulation in disease states</li>
+                  <li>Protein-protein and protein-DNA interactions</li>
+                  <li>Molecular pathways involved in cancer progression</li>
+                  <li>Signal transduction mechanisms</li>
+                  <li>Epigenetic modifications and their functional consequences</li>
+                  <li>Application of molecular techniques for disease diagnosis</li>
+                </ul>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* MSc Thesis Section */}
+          <motion.section
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-16"
+          >
+            <div className="card-glass rounded-xl p-8 border-l-4 border-l-primary">
               <div className="flex items-center gap-3 mb-4">
                 <FlaskConical className="text-primary" size={28} />
                 <h2 className="text-2xl font-heading font-bold text-foreground">
-                  MSc Thesis Project
+                  Thesis Project (2020-2022)
                 </h2>
               </div>
               
@@ -97,135 +265,78 @@ const ResearchDetails = () => {
             </div>
           </motion.section>
 
-          {/* Research Interests Detailed */}
+          {/* Conferences Section */}
           <motion.section
+            ref={conferencesRef}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
             className="mb-16"
           >
             <h2 className="text-3xl font-heading font-bold text-foreground mb-8">
-              Research <span className="text-gradient">Interests</span>
+              <span className="text-gradient">Conferences</span>
             </h2>
 
-            <div className="space-y-8">
-              {/* Nanoparticle Synthesis */}
+            <div className="space-y-6">
+              {/* Conference 1 */}
               <div className="card-glass rounded-xl p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <FlaskConical size={24} className="text-primary" />
+                    <Calendar size={24} className="text-primary" />
                   </div>
-                  <h3 className="text-xl font-heading font-semibold text-foreground">
-                    Nanoparticle Synthesis & Nanobiotechnology
+                  <h3 className="text-lg font-heading font-semibold text-foreground">
+                    BSBMB - SABC - OMC International Conference 2023 on Molecules of Life for Sustainability
                   </h3>
                 </div>
-                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
-                  My research in this area focuses on developing eco-friendly synthesis methods for metallic nanoparticles with biomedical applications. I am particularly interested in:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
-                  <li>Green synthesis approaches using plant-based reducing agents</li>
-                  <li>Characterization of nanoparticles using spectroscopic and microscopic techniques</li>
-                  <li>Evaluation of antimicrobial properties against pathogenic bacteria</li>
-                  <li>Assessment of anticancer activities in various cell lines</li>
-                  <li>Understanding mechanisms of nanoparticle-cell interactions</li>
-                  <li>Development of targeted drug delivery systems</li>
-                </ul>
+                <div className="ml-15 space-y-2 text-secondary-foreground text-[15px]">
+                  <p>
+                    <span className="font-semibold text-foreground">Organized by:</span> University of Dhaka
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Date:</span> 04-05 February 2023
+                  </p>
+                </div>
               </div>
 
-              {/* Molecular Biology */}
+              {/* Conference 2 */}
               <div className="card-glass rounded-xl p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Dna size={24} className="text-primary" />
+                    <Calendar size={24} className="text-primary" />
                   </div>
-                  <h3 className="text-xl font-heading font-semibold text-foreground">
-                    Molecular Biology & Gene Expression
+                  <h3 className="text-lg font-heading font-semibold text-foreground">
+                    2nd International Conference on Genomics, Nanotech, and Bioengineering-2022 (ICGNB)
                   </h3>
                 </div>
-                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
-                  Understanding molecular mechanisms that govern biological processes is central to my research interests:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
-                  <li>Gene expression regulation in disease states</li>
-                  <li>Protein-protein and protein-DNA interactions</li>
-                  <li>Molecular pathways involved in cancer progression</li>
-                  <li>Signal transduction mechanisms</li>
-                  <li>Epigenetic modifications and their functional consequences</li>
-                  <li>Application of molecular techniques for disease diagnosis</li>
-                </ul>
-              </div>
-
-              {/* Structural Biology */}
-              <div className="card-glass rounded-xl p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Microscope size={24} className="text-primary" />
-                  </div>
-                  <h3 className="text-xl font-heading font-semibold text-foreground">
-                    Structural Biology & Molecular Modeling
-                  </h3>
+                <div className="ml-15 space-y-2 text-secondary-foreground text-[15px]">
+                  <p>
+                    <span className="font-semibold text-foreground">Hosted by:</span> North South University, Dhaka
+                  </p>
+                  <p>
+                    <span className="font-semibold text-foreground">Date:</span> 26-28 June 2022
+                  </p>
                 </div>
-                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
-                  Structure-function relationships are crucial for understanding biological systems. My interests include:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
-                  <li>Three-dimensional structure determination of proteins</li>
-                  <li>Molecular dynamics simulations</li>
-                  <li>Structure-based drug design and virtual screening</li>
-                  <li>Protein folding and misfolding mechanisms</li>
-                  <li>Enzyme catalysis and inhibition studies</li>
-                  <li>Computational prediction of protein structures using tools like AlphaFold</li>
-                </ul>
-              </div>
-
-              {/* Bioinformatics */}
-              <div className="card-glass rounded-xl p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Binary size={24} className="text-primary" />
-                  </div>
-                  <h3 className="text-xl font-heading font-semibold text-foreground">
-                    Bioinformatics & Computational Biology
-                  </h3>
-                </div>
-                <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
-                  Computational approaches are essential for modern biological research. I am developing skills in:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
-                  <li>Sequence analysis and genomic data interpretation</li>
-                  <li>Transcriptomics and proteomics data analysis</li>
-                  <li>Machine learning applications in biology</li>
-                  <li>Development of bioinformatics pipelines using Python</li>
-                  <li>Phylogenetic analysis and evolutionary studies</li>
-                  <li>Systems biology approaches to understand complex biological networks</li>
-                  <li>Integration of multi-omics data</li>
-                </ul>
               </div>
             </div>
           </motion.section>
 
-          {/* Current Research Direction */}
-          <motion.section
-            initial={{ opacity: 0, y: 30 }}
+          {/* Move to Top Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex justify-center pt-2"
           >
-            <div className="card-glass rounded-xl p-8 border-l-4 border-l-primary">
-              <h2 className="text-2xl font-heading font-bold text-foreground mb-4">
-                Current Research Focus
-              </h2>
-              <p className="text-secondary-foreground text-[15px] leading-relaxed mb-4">
-                I am currently pursuing an MSc in Computational Biomedicine at the University of Southern Denmark (2025-2027), where my research interests have expanded to include computational approaches to biological problems. My current focus areas include:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-secondary-foreground text-[15px] ml-4">
-                <li>Applying machine learning to predict protein functions and interactions</li>
-                <li>Developing computational tools for analyzing large-scale biological datasets</li>
-                <li>Integrating molecular biology knowledge with computational methodologies</li>
-                <li>Contributing to open-source bioinformatics projects</li>
-                <li>Exploring applications of AI in drug discovery and precision medicine</li>
-              </ul>
-            </div>
-          </motion.section>
+            <motion.button
+              onClick={scrollToTop}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl"
+            >
+              <ArrowUp size={20} />
+              <span>Move to top</span>
+            </motion.button>
+          </motion.div>
         </div>
       </main>
 
