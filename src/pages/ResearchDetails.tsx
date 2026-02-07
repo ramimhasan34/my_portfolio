@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import con1 from "@/assets/con_1.png";
+import con2 from "@/assets/con_2.png";
 
 const ResearchDetails = () => {
   const conferencesRef = useRef<HTMLDivElement>(null);
@@ -280,41 +282,73 @@ const ResearchDetails = () => {
             <div className="space-y-6">
               {/* Conference 1 */}
               <div className="card-glass rounded-xl p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Calendar size={24} className="text-primary" />
+                <div className="grid md:grid-cols-[1fr,auto] gap-6 items-start">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <Calendar size={24} className="text-primary" />
+                      </div>
+                      <h3 className="text-lg font-heading font-semibold text-foreground">
+                        BSBMB - SABC - OMC International Conference 2023 on Molecules of Life for Sustainability
+                      </h3>
+                    </div>
+                    <div className="ml-15 space-y-2 text-secondary-foreground text-[15px]">
+                      <p>
+                        <span className="font-semibold text-foreground">Organized by:</span> University of Dhaka
+                      </p>
+                      <p>
+                        <span className="font-semibold text-foreground">Date:</span> 04-05 February 2023
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-heading font-semibold text-foreground">
-                    BSBMB - SABC - OMC International Conference 2023 on Molecules of Life for Sustainability
-                  </h3>
-                </div>
-                <div className="ml-15 space-y-2 text-secondary-foreground text-[15px]">
-                  <p>
-                    <span className="font-semibold text-foreground">Organized by:</span> University of Dhaka
-                  </p>
-                  <p>
-                    <span className="font-semibold text-foreground">Date:</span> 04-05 February 2023
-                  </p>
+                  <div className="w-full md:w-64 flex-shrink-0">
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -8 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <img 
+                        src={con1} 
+                        alt="BSBMB - SABC Conference" 
+                        className="w-full h-auto rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-primary/20"
+                      />
+                    </motion.div>
+                  </div>
                 </div>
               </div>
 
               {/* Conference 2 */}
               <div className="card-glass rounded-xl p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Calendar size={24} className="text-primary" />
+                <div className="grid md:grid-cols-[1fr,auto] gap-6 items-start">
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <Calendar size={24} className="text-primary" />
+                      </div>
+                      <h3 className="text-lg font-heading font-semibold text-foreground">
+                        2nd International Conference on Genomics, Nanotech, and Bioengineering-2022 (ICGNB)
+                      </h3>
+                    </div>
+                    <div className="ml-15 space-y-2 text-secondary-foreground text-[15px]">
+                      <p>
+                        <span className="font-semibold text-foreground">Hosted by:</span> North South University, Dhaka
+                      </p>
+                      <p>
+                        <span className="font-semibold text-foreground">Date:</span> 26-28 June 2022
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-heading font-semibold text-foreground">
-                    2nd International Conference on Genomics, Nanotech, and Bioengineering-2022 (ICGNB)
-                  </h3>
-                </div>
-                <div className="ml-15 space-y-2 text-secondary-foreground text-[15px]">
-                  <p>
-                    <span className="font-semibold text-foreground">Hosted by:</span> North South University, Dhaka
-                  </p>
-                  <p>
-                    <span className="font-semibold text-foreground">Date:</span> 26-28 June 2022
-                  </p>
+                  <div className="w-full md:w-64 flex-shrink-0">
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -8 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
+                      <img 
+                        src={con2} 
+                        alt="2nd International Conference on Genomics, Nanotech, and Bioengineering" 
+                        className="w-full h-auto rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-primary/20"
+                      />
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
