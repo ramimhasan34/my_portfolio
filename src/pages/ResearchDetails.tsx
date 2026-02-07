@@ -49,7 +49,7 @@ const ResearchDetails = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="fixed top-24 right-6 inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl z-50"
+              className="fixed top-24 right-6 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-black rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl z-50"
             >
               <Sparkles size={18} />
               <span>Check my conference gallery</span>
