@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const educationData = [
   {
@@ -91,6 +92,25 @@ const EducationSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Training and Certificates Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <Link to="/training">
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-6 py-2.5 bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary/80 hover:to-primary/70 text-black rounded-lg transition-all duration-300 font-semibold text-sm shadow-lg hover:shadow-xl hover:shadow-primary/30"
+            >
+              <span>Check my training and certificates</span>
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

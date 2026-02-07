@@ -1,19 +1,13 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Microscope, Dna, Binary } from "lucide-react";
+import { FlaskConical, Microscope, Dna, Atom } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const researchInterests = [
   {
-    icon: FlaskConical,
-    title: "Nanoparticle Synthesis",
+    icon: Atom,
+    title: "Bioinformatics",
     description:
-      "Green synthesis of antimicrobial silver/silver chloride nanoparticles using plant extracts with antiproliferative activity.",
-  },
-  {
-    icon: Dna,
-    title: "Molecular Biology",
-    description:
-      "Understanding molecular mechanisms underlying biological processes, gene expression, and protein interactions.",
+      "Computational analysis of biological data, molecular modeling, and sequence analysis using Python.",
   },
   {
     icon: Microscope,
@@ -22,10 +16,16 @@ const researchInterests = [
       "Studying three-dimensional structures of biomolecules to understand their function and interactions.",
   },
   {
-    icon: Binary,
-    title: "Bioinformatics",
+    icon: Dna,
+    title: "Molecular Biology",
     description:
-      "Computational analysis of biological data, molecular modeling, and sequence analysis using Python.",
+      "Understanding molecular mechanisms underlying biological processes, gene expression, and protein interactions.",
+  },
+  {
+    icon: FlaskConical,
+    title: "Nanobiotechnology",
+    description:
+      "Green synthesis of antimicrobial silver/silver chloride nanoparticles using plant extracts with antiproliferative activity.",
   },
 ];
 

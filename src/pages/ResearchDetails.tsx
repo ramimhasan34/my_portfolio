@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUp, FlaskConical, Microscope, Dna, Binary, BookOpen, ExternalLink, Calendar, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowUp, FlaskConical, Microscope, Dna, Atom, BookOpen, ExternalLink, Calendar, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
@@ -110,7 +110,7 @@ const ResearchDetails = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all duration-300 text-sm font-medium"
                   >
                     <ExternalLink size={16} />
-                    🔗 Read Online: ScienceDirect Article
+                    Read Online: ScienceDirect Article
                   </a>
 
                   <div className="mt-6 p-4 bg-background/50 rounded-lg border border-border">
@@ -140,7 +140,7 @@ const ResearchDetails = () => {
               <div className="card-glass rounded-xl p-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Binary size={24} className="text-primary" />
+                    <Atom size={24} className="text-primary" />
                   </div>
                   <h3 className="text-xl font-heading font-semibold text-foreground">
                     Bioinformatics & Computational Biology

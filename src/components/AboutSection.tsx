@@ -9,11 +9,11 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-5 gap-12 items-center max-w-5xl mx-auto"
+          className="grid md:grid-cols-5 gap-12 items-start max-w-5xl mx-auto"
         >
           {/* Photo */}
           <motion.div 
-            className="md:col-span-2 flex justify-center"
+            className="md:col-span-2 flex justify-center md:pt-20"
             whileHover={{ y: -8 }}
             transition={{ duration: 0.3 }}
           >
@@ -43,14 +43,21 @@ const AboutSection = () => {
             </h2>
             <div className="w-12 h-1 bg-primary rounded-full mb-6" />
             <p className="text-secondary-foreground leading-relaxed text-[15px]">
-              Hello, this is Ramim Hasan Naim. I am currently pursuing my MSc in Computational Biomedicine at the University of Southern Denmark (SDU). I am passionate about leveraging computational tools and bioinformatics to solve complex biological problems and advance biomedical research.
+              Hello, I'm Ramim Hasan Naim, currently pursuing my MSc in Computational Biomedicine at the University of Southern Denmark (SDU). I enjoy applying computational tools and bioinformatics to understand complex biological problems and contribute to meaningful research.
             </p>
             <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4">
-              I have a passion for{" "}
+              I am particularly interested in{" "}
               <strong className="text-foreground">
-                Computational Biology, Bioinformatics &amp; Structural Biology
+                Bioinformatics and Structural Biology
               </strong>
-              . I am skilled in Python programming and various bioinformatics tools. I'm constantly driven to learn new technologies and methodologies. In the future, I aim to pursue a career in research &amp; development, focusing on computational approaches to biological challenges.
+              . I have experience working with a variety of bioinformatics tools. I'm always eager to learn new methods and approaches to enhance my research. Previously, I worked as a{" "}
+              <strong className="text-foreground">
+                Research Assistant at the Protein and Nanomedicine Research Laboratory
+              </strong>
+              , Department of Biochemistry and Molecular Biology, University of Rajshahi, where I contributed to projects focused on protein research and nanomedicine.
+            </p>
+            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4">
+              Looking ahead, I aim to build a career in research and development, focusing on computational approaches to address challenging biological problems.
             </p>
           </div>
         </motion.div>
