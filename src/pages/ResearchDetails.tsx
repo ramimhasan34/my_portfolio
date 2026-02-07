@@ -331,7 +331,7 @@ const ResearchDetails = () => {
               onClick={scrollToTop}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary/90 text-black rounded-lg transition-all duration-300 font-medium text-sm shadow-lg hover:shadow-xl"
             >
               <ArrowUp size={20} />
               <span>Move to top</span>
