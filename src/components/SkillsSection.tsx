@@ -1,21 +1,24 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { BarChart3, Brain, Palette } from "lucide-react";
 
-const skills = [
-  { name: "Python", level: 75 },
-  { name: "PyMOL", level: 75 },
-  { name: "R", level: 75 },
-  { name: "Weka", level: 75 },
-  { name: "SPSS", level: 75 },
-  { name: "Photoshop", level: 75 },
+const skillCategories = [
+  {
+    title: "Data Analysis & Statistics",
+    icon: BarChart3,
+    tools: ["Python", "R", "SPSS"],
+  },
+  {
+    title: "Machine Learning & Data Mining",
+    icon: Brain,
+    tools: ["Weka", "PyMOL"],
+  },
+  {
+    title: "Design & Visualization",
+    icon: Palette,
+    tools: ["Photoshop"],
+  },
 ];
-
-const getSkillTier = (level: number) => {
-  if (level >= 85) return "Expert";
-  if (level >= 80) return "Advanced";
-  if (level >= 70) return "Proficient";
-  return "Familiar";
-};
 
 const SkillsSection = () => {
   return (
@@ -34,31 +37,33 @@ const SkillsSection = () => {
           <div className="w-12 h-1 bg-primary rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 max-w-4xl mx-auto">
-          {skills.map((skill, index) => (
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              viewport={{ once: true, margin: "-30px" }}
+              key={category.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="card-glass rounded-xl p-6 group hover:border-primary/40 transition-colors duration-300"
             >
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-heading font-medium text-foreground">
-                  {skill.name}
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  {getSkillTier(skill.level)}
-                </span>
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <category.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-sm font-heading font-semibold text-foreground leading-tight">
+                  {category.title}
+                </h3>
               </div>
-              <div className="h-2 rounded-full bg-secondary overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: 0.3 + index * 0.08 }}
-                  viewport={{ once: true }}
-                  className="h-full rounded-full bg-primary"
-                />
+              <div className="flex flex-wrap gap-2">
+                {category.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="px-3 py-1.5 text-sm font-medium rounded-full bg-secondary text-secondary-foreground border border-border hover:border-primary/30 hover:text-primary transition-colors duration-200"
+                  >
+                    {tool}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
@@ -76,7 +81,7 @@ const SkillsSection = () => {
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-6 py-2.5 bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary/80 hover:to-primary/70 text-black rounded-lg transition-all duration-300 font-semibold text-sm shadow-lg hover:shadow-xl hover:shadow-primary/30"
+              className="inline-flex items-center gap-3 px-6 py-2.5 bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary/80 hover:to-primary/70 text-primary-foreground rounded-lg transition-all duration-300 font-semibold text-sm shadow-lg hover:shadow-xl hover:shadow-primary/30"
             >
               <span>Explore my leadership skills</span>
             </motion.button>
