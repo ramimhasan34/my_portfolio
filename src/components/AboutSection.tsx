@@ -37,15 +37,15 @@ const AboutSection = () => {
           </motion.div>
 
           {/* Bio */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-3 md:pr-6">
             <h2 className="text-3xl font-heading font-bold text-foreground mb-2">
               About <span className="text-gradient">Me</span>
             </h2>
             <div className="w-12 h-1 bg-primary rounded-full mb-6" />
-            <p className="text-secondary-foreground leading-relaxed text-[15px]">
+            <p className="text-secondary-foreground leading-relaxed text-[15px] text-justify">
               Hello, I'm Ramim Hasan Naim, currently pursuing my MSc in Computational Biomedicine at the University of Southern Denmark (SDU). I enjoy applying computational tools and bioinformatics to understand complex biological problems and contribute to meaningful research.
             </p>
-            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4">
+            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4 text-justify">
               I am particularly interested in{" "}
               <strong className="text-foreground">
                 Bioinformatics and Structural Biology
@@ -56,8 +56,8 @@ const AboutSection = () => {
               </strong>
               , Department of Biochemistry and Molecular Biology, University of Rajshahi, where I contributed to projects focused on protein research and nanomedicine.
             </p>
-            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4">
-              Looking ahead, I aim to build a career in research and development, focusing on computational approaches to address challenging biological problems.
+            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4 text-justify">
+              Looking ahead, I aim to pursue a career in research and development, with a focus on computational approaches to addressing key challenges in biomedicine.
             </p>
           </div>
         </motion.div>

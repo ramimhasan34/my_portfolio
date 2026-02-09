@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { BarChart3, Brain, Palette } from "lucide-react";
+import { Terminal, Brain, Dna } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Data Analysis",
-    icon: BarChart3,
-    tools: ["Python", "R", "SPSS"],
+    title: "Progarmming",
+    icon: Terminal,
+    tools: ["Python", "R"],
   },
   {
-    title: "Bioinformatics",
+    title: "Machine Learning",
     icon: Brain,
-    tools: ["PyMOL", "Weka"],
+    tools: ["Weka"],
   },
   {
-    title: "Visual Design",
-    icon: Palette,
-    tools: ["Photoshop", "Illustrator"],
+    title: "Molecular Visualization",
+    icon: Dna,
+    tools: ["PyMOL"],
   },
 ];
 
