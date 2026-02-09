@@ -16,7 +16,7 @@ const skillCategories = [
   {
     title: "Molecular Visualization",
     icon: Dna,
-    tools: ["PyMOL"],
+    tools: ["PyMOL", "VMD"],
   },
 ];
 

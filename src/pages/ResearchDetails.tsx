@@ -253,7 +253,7 @@ const ResearchDetails = () => {
 
                 <div>
                   <h4 className="font-semibold text-foreground mb-2">Institution:</h4>
-                  <p>Department of Biochemistry & Molecular Biology, University of Rajshahi, Bangladesh (2019-2022)</p>
+                  <p>Department of Biochemistry & Molecular Biology, University of Rajshahi, Bangladesh</p>
                 </div>
               </div>
             </div>
