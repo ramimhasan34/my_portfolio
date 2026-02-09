@@ -60,10 +60,10 @@ const Leadership = () => {
                     </span>
                   </div>
                   <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                    VICE PRESIDENT
+                    Vice President
                   </h3>
                   <p className="text-base text-secondary-foreground font-medium">
-                    BIOCHEMISTRY AND MOLECULAR BIOLOGY ENGLISH LANGUAGE CLUB
+                    Biochemistry and Molecular Biology English Language Club
                   </p>
                 </div>
               </div>
@@ -87,13 +87,13 @@ const Leadership = () => {
                     </span>
                   </div>
                   <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                    PUBLIC RELATION OFFICER
+                    Public Relation Officer
                   </h3>
                   <p className="text-base text-secondary-foreground font-medium">
-                    AMERICAN SOCIETY FOR MICROBIOLOGY
+                    American Society for Microbiology
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    RAJSHAHI UNIVERSITY STUDENT CHAPTER
+                    Rajshahi University Student Chapter
                   </p>
                 </div>
               </div>
@@ -117,10 +117,10 @@ const Leadership = () => {
                     </span>
                   </div>
                   <h3 className="text-xl font-heading font-bold text-foreground mb-2">
-                    JOINT SECRETARY
+                    Joint Secretary
                   </h3>
                   <p className="text-base text-secondary-foreground font-medium">
-                    RAJSHAHI UNIVERSITY SCIENCE CLUB (RUSC)
+                    Rajshahi University Science Club (RUSC)
                   </p>
                 </div>
               </div>
