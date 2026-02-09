@@ -4,19 +4,19 @@ import { BarChart3, Brain, Palette } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Data Analysis & Statistics",
+    title: "Data Analysis",
     icon: BarChart3,
     tools: ["Python", "R", "SPSS"],
   },
   {
-    title: "Machine Learning & Data Mining",
+    title: "Bioinformatics",
     icon: Brain,
-    tools: ["Weka", "PyMOL"],
+    tools: ["PyMOL", "Weka"],
   },
   {
-    title: "Design & Visualization",
+    title: "Visual Design",
     icon: Palette,
-    tools: ["Photoshop"],
+    tools: ["Photoshop", "Illustrator"],
   },
 ];
 
