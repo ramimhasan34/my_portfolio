@@ -248,15 +248,7 @@ const ResearchDetails = () => {
                     <li>Demonstrated strong antimicrobial activity against various bacterial strains</li>
                     <li>Showed antiproliferative effects against Ehrlich Ascites Carcinoma cells</li>
                     <li>Exhibited cytotoxic activity against MCF-7 breast cancer cells</li>
-                    <li>Characterized nanoparticles using UV-Vis spectroscopy, SEM, and XRD techniques</li>
                   </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-foreground mb-2">Significance:</h4>
-                  <p>
-                    This work contributes to the growing field of nanobiotechnology by providing a sustainable and cost-effective method for nanoparticle synthesis. The dual antimicrobial and anticancer properties make these nanoparticles promising candidates for biomedical applications, particularly in cancer therapy and infection control.
-                  </p>
                 </div>
 
                 <div>
