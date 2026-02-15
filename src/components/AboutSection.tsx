@@ -42,10 +42,10 @@ const AboutSection = () => {
               About <span className="text-gradient">Me</span>
             </h2>
             <div className="w-12 h-1 bg-primary rounded-full mb-6" />
-            <p className="text-secondary-foreground leading-relaxed text-[15px] text-justify">
+            <p className="text-secondary-foreground leading-relaxed text-base text-left">
               Hello, I'm Ramim Hasan Naim, currently pursuing my MSc in Computational Biomedicine at the University of Southern Denmark (SDU). I enjoy applying computational tools and bioinformatics to understand complex biological problems and contribute to meaningful research.
             </p>
-            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4 text-justify">
+            <p className="text-secondary-foreground leading-relaxed text-base mt-4 text-left">
               I am particularly interested in{" "}
               <strong className="text-foreground">
                 Bioinformatics and Structural Biology
@@ -56,7 +56,7 @@ const AboutSection = () => {
               </strong>
               , Department of Biochemistry and Molecular Biology, University of Rajshahi, where I contributed to projects focused on protein research and nanomedicine.
             </p>
-            <p className="text-secondary-foreground leading-relaxed text-[15px] mt-4 text-justify">
+            <p className="text-secondary-foreground leading-relaxed text-base mt-4 text-left">
               Looking ahead, I aim to pursue a career in research and development, with a focus on computational approaches to addressing key challenges in biomedicine.
             </p>
           </div>
