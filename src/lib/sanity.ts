@@ -7,7 +7,7 @@ export const sanityClient = createClient({
   dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
   apiVersion: '2024-01-01',
   useCdn: true,
-  token: import.meta.env.VITE_SANITY_API_TOKEN || 'skyoJfuMCH9VljsTX41WTUVNEy9bjC0HTvQx0YKpaBOcTSqMC0a6b0giaqv3OzfVFGrJ4cgUPUb2Ukioh2qVa7nQicgJi1loSre2VX7JOm9v0I22uhbnLzBmfR0KUjO8sNxZlzRhF0TOxrvaZPd7freIUIQhzMGHb3bZ2ZrJAxKpR7pvOeRZ',
+  token: import.meta.env.VITE_SANITY_API_TOKEN,
 });
 
 // Image URL builder
@@ -23,13 +23,9 @@ export const sanityQueries = {
       _id,
       title,
       slug,
-      excerpt,
-      content,
+      body,
+      image,
       publishedAt,
-      readingTime,
-      category,
-      author,
-      mainImage,
     }
   `,
   
@@ -39,13 +35,9 @@ export const sanityQueries = {
       _id,
       title,
       slug,
-      excerpt,
-      content,
+      body,
+      image,
       publishedAt,
-      readingTime,
-      category,
-      author,
-      mainImage,
     }
   `,
   
@@ -55,13 +47,9 @@ export const sanityQueries = {
       _id,
       title,
       slug,
-      excerpt,
-      content,
+      body,
+      image,
       publishedAt,
-      readingTime,
-      category,
-      author,
-      mainImage,
     }
   `,
 };
@@ -72,11 +60,7 @@ export interface SanityBlogPost {
   slug: {
     current: string;
   };
-  excerpt: string;
-  content: string;
+  body?: Array<{ _type?: string; children?: Array<{ text?: string }> }>;
+  image?: any;
   publishedAt: string;
-  readingTime?: number;
-  category: string;
-  author?: string;
-  mainImage?: any;
 }

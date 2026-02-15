@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSanityBlogPosts } from "@/hooks/use-sanity-blog";
-import { SanityBlogPost } from "@/lib/sanity";
 
 // Fallback data for when Sanity is not yet set up
 const fallbackBlogPosts = [
@@ -92,12 +91,46 @@ const Blog = () => {
   }, [sanityPosts, loading]);
 
   const formatDate = (dateString: string) => {
+    if (!dateString) {
+      return "";
+    }
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
     });
+  };
+
+  const getPlainText = (body: any) => {
+    if (!Array.isArray(body)) {
+      return "";
+    }
+
+    return body
+      .filter((block) => block?._type === "block" && Array.isArray(block.children))
+      .map((block) =>
+        block.children
+          .map((child: { text?: string }) => child.text || "")
+          .join("")
+      )
+      .join("\n\n");
+  };
+
+  const getExcerpt = (post: any) => {
+    if (post?.excerpt) {
+      return post.excerpt;
+    }
+
+    const bodyText = getPlainText(post?.body);
+    const source = bodyText || post?.content || "";
+    return source ? `${source.slice(0, 160)}${source.length > 160 ? "..." : ""}` : "";
+  };
+
+  const getPreview = (post: any) => {
+    const bodyText = getPlainText(post?.body);
+    const source = bodyText || post?.content || post?.excerpt || "";
+    return source ? `${source.split("\n\n")[0]}...` : "";
   };
 
   return (
@@ -143,19 +176,27 @@ const Blog = () => {
                 className="card-glass rounded-xl p-6 hover:glow-primary transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4 flex-wrap">
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">
-                    {post.category}
-                  </span>
-                  <span className="text-xs text-muted-foreground">•</span>
+                  {post.category && (
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                      {post.category}
+                    </span>
+                  )}
+                  {post.category && (
+                    <span className="text-xs text-muted-foreground">•</span>
+                  )}
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Calendar size={12} />
                     <span>{formatDate(post.publishedAt)}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">•</span>
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <Clock size={12} />
-                    <span>{post.readingTime || 5} min read</span>
-                  </div>
+                  {(post.readingTime || post.readTime) && (
+                    <span className="text-xs text-muted-foreground">•</span>
+                  )}
+                  {(post.readingTime || post.readTime) && (
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <Clock size={12} />
+                      <span>{post.readingTime || post.readTime} min read</span>
+                    </div>
+                  )}
                 </div>
 
                 <h2 className="text-xl font-heading font-bold text-foreground mb-3 hover:text-primary transition-colors">
@@ -163,18 +204,27 @@ const Blog = () => {
                 </h2>
 
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                  {post.excerpt}
+                  {getExcerpt(post)}
                 </p>
 
                 <div className="prose prose-invert prose-sm max-w-none">
                   <p className="text-sm text-secondary-foreground leading-relaxed">
-                    {post.content.split('\n\n')[0]}...
+                    {getPreview(post)}
                   </p>
                 </div>
 
-                <button className="mt-4 text-sm text-primary hover:text-foreground transition-colors font-medium">
-                  Read More →
-                </button>
+                {post?.slug?.current ? (
+                  <Link
+                    to={`/blog/${post.slug.current}`}
+                    className="mt-4 inline-flex text-sm text-primary hover:text-foreground transition-colors font-medium"
+                  >
+                    Read More →
+                  </Link>
+                ) : (
+                  <span className="mt-4 inline-flex text-sm text-muted-foreground">
+                    Read More →
+                  </span>
+                )}
               </motion.article>
             ))}
           </div>
