@@ -5,27 +5,27 @@ import { Link } from "react-router-dom";
 const researchInterests = [
   {
     icon: Atom,
-    title: "Bioinformatics",
+    title: "Computational Proteomics",
     description:
-      "Computational analysis of biological data, molecular modeling, and sequence analysis using Python.",
+      "Applying bioinformatics and machine learning approaches to large-scale mass spectrometry–based proteomics data to investigate chromatin dynamics and disease-associated protein regulation.",
   },
   {
     icon: Microscope,
-    title: "Structural Biology",
+    title: "Systems Biology",
     description:
-      "Studying three-dimensional structures of biomolecules to understand their function and interactions.",
+      "Integrating computational analysis of proteomics, transcriptomics, lipidomics, and metabolomics data to investigate lipid signaling and metabolic regulation in cellular function and disease.",
   },
   {
     icon: Dna,
-    title: "Molecular Biology",
+    title: "Functional Genomics",
     description:
-      "Understanding molecular mechanisms underlying biological processes, gene expression, and protein interactions.",
+      "Integrating computational analysis of chromatin structure and transcriptional regulation to investigate how environmental and physiological signals influence gene expression and cellular function.",
   },
   {
     icon: FlaskConical,
-    title: "Nanobiotechnology",
+    title: "Translational Cancer Biology",
     description:
-      "Green synthesis of antimicrobial silver/silver chloride nanoparticles using plant extracts with antiproliferative activity.",
+      "Using computational and integrative analysis to investigate molecular pathways and metabolic regulation in cancer cells, focusing on cell plasticity, aggressiveness, and responses to therapy.",
   },
 ];
 
