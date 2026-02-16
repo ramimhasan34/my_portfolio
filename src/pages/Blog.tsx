@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSanityBlogPosts } from "@/hooks/use-sanity-blog";
-import { urlFor } from "@/lib/sanity";
+import { urlFor, SanityBlogPost } from "@/lib/sanity";
 
 // Fallback data for when Sanity is not yet set up
-const fallbackBlogPosts = [
+const fallbackBlogPosts: Array<Partial<SanityBlogPost> & { _id: string; title: string; publishedAt: string; slug: { current: string }; content?: string; id?: string }> = [
   {
     _id: "1",
     title: "CRISPR-Cas9: Revolutionizing Gene Editing Technology",
@@ -75,7 +75,7 @@ Denmark has become an attractive destination for higher education due to its str
 
 const Blog = () => {
   const { posts: sanityPosts, loading, error } = useSanityBlogPosts();
-  const [displayPosts, setDisplayPosts] = useState<Array<typeof fallbackBlogPosts[0] | typeof sanityPosts[0]>>([]);
+  const [displayPosts, setDisplayPosts] = useState<Array<SanityBlogPost | typeof fallbackBlogPosts[0]>>([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -165,7 +165,7 @@ const Blog = () => {
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {displayPosts.map((post, index) => (
               <motion.article
-                key={post._id || post.id}
+                key={post._id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
