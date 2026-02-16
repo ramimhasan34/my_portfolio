@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSanityBlogPosts } from "@/hooks/use-sanity-blog";
+import { urlFor } from "@/lib/sanity";
 
 // Fallback data for when Sanity is not yet set up
 const fallbackBlogPosts = [
@@ -174,7 +175,7 @@ const Blog = () => {
                 {post.image && (
                   <div className="relative w-full h-48 overflow-hidden bg-muted">
                     <img 
-                      src={post.image} 
+                      src={urlFor(post.image).width(800).height(400).url()} 
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSanityBlogPostBySlug } from "@/hooks/use-sanity-blog";
+import { urlFor } from "@/lib/sanity";
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -114,6 +115,17 @@ const BlogDetails = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
                 {post.title}
               </h1>
+
+              {/* Featured Image */}
+              {post.image && (
+                <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg mb-8">
+                  <img
+                    src={urlFor(post.image).width(1200).height(600).url()}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
 
               <div className="prose prose-invert max-w-none text-secondary-foreground leading-relaxed">
                 {renderBody()}
