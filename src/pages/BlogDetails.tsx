@@ -27,7 +27,7 @@ const BlogDetails = () => {
     });
   };
 
-  const getPlainText = (body: any) => {
+  const getPlainText = (body: unknown) => {
     if (!Array.isArray(body)) {
       return "";
     }
@@ -44,7 +44,7 @@ const BlogDetails = () => {
 
   const renderBody = () => {
     const bodyText = getPlainText(post?.body);
-    const source = bodyText || (post as any)?.content || "";
+    const source = bodyText || post?.content || "";
     if (!source) {
       return null;
     }
@@ -101,13 +101,13 @@ const BlogDetails = () => {
                   <Calendar size={12} />
                   <span>{formatDate(post.publishedAt)}</span>
                 </div>
-                {(post as any)?.readingTime && (
+                {post?.readingTime && (
                   <span className="text-xs text-muted-foreground">•</span>
                 )}
-                {(post as any)?.readingTime && (
+                {post?.readingTime && (
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Clock size={12} />
-                    <span>{(post as any).readingTime} min read</span>
+                    <span>{post.readingTime} min read</span>
                   </div>
                 )}
               </div>

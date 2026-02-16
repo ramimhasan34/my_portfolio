@@ -1,5 +1,6 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // Initialize Sanity client with your credentials
 if (!import.meta.env.VITE_SANITY_PROJECT_ID || !import.meta.env.VITE_SANITY_DATASET) {
@@ -19,7 +20,7 @@ export const sanityClient = createClient({
 // Image URL builder
 const builder = imageUrlBuilder(sanityClient);
 
-export const urlFor = (source: any) => builder.image(source);
+export const urlFor = (source: SanityImageSource) => builder.image(source);
 
 // Queries
 export const sanityQueries = {
@@ -67,6 +68,11 @@ export interface SanityBlogPost {
     current: string;
   };
   body?: Array<{ _type?: string; children?: Array<{ text?: string }> }>;
-  image?: any;
+  image?: SanityImageSource;
   publishedAt: string;
+  category?: string;
+  readingTime?: number;
+  readTime?: number;
+  excerpt?: string;
+  content?: string;
 }

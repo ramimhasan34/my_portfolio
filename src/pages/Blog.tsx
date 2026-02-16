@@ -75,7 +75,7 @@ Denmark has become an attractive destination for higher education due to its str
 
 const Blog = () => {
   const { posts: sanityPosts, loading, error } = useSanityBlogPosts();
-  const [displayPosts, setDisplayPosts] = useState<any[]>([]);
+  const [displayPosts, setDisplayPosts] = useState<Array<typeof fallbackBlogPosts[0] | typeof sanityPosts[0]>>([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -103,7 +103,7 @@ const Blog = () => {
     });
   };
 
-  const getPlainText = (body: any) => {
+  const getPlainText = (body: unknown) => {
     if (!Array.isArray(body)) {
       return "";
     }
@@ -118,7 +118,7 @@ const Blog = () => {
       .join(" ");
   };
 
-  const getExcerpt = (post: any) => {
+  const getExcerpt = (post: typeof displayPosts[0]) => {
     // Priority: excerpt field > first paragraph of body > content field
     if (post?.excerpt) {
       return post.excerpt;
