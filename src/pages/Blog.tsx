@@ -114,23 +114,18 @@ const Blog = () => {
           .map((child: { text?: string }) => child.text || "")
           .join("")
       )
-      .join("\n\n");
+      .join(" ");
   };
 
   const getExcerpt = (post: any) => {
+    // Priority: excerpt field > first paragraph of body > content field
     if (post?.excerpt) {
       return post.excerpt;
     }
 
     const bodyText = getPlainText(post?.body);
     const source = bodyText || post?.content || "";
-    return source ? `${source.slice(0, 160)}${source.length > 160 ? "..." : ""}` : "";
-  };
-
-  const getPreview = (post: any) => {
-    const bodyText = getPlainText(post?.body);
-    const source = bodyText || post?.content || post?.excerpt || "";
-    return source ? `${source.split("\n\n")[0]}...` : "";
+    return source ? `${source.slice(0, 200)}${source.length > 200 ? "..." : ""}` : "";
   };
 
   return (
@@ -173,58 +168,75 @@ const Blog = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="card-glass rounded-xl p-6 hover:glow-primary transition-all duration-300"
+                className="group card-glass rounded-xl overflow-hidden hover:glow-primary transition-all duration-300 flex flex-col h-full"
               >
-                <div className="flex items-center gap-3 mb-4 flex-wrap">
-                  {post.category && (
-                    <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                {/* Image Header - if available */}
+                {post.image && (
+                  <div className="relative w-full h-48 overflow-hidden bg-muted">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    {post.category && (
+                      <span className="absolute top-4 left-4 px-3 py-1 bg-primary/90 backdrop-blur-sm text-xs font-semibold text-primary-foreground uppercase tracking-wider rounded-full">
+                        {post.category}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Category badge if no image */}
+                  {!post.image && post.category && (
+                    <span className="inline-flex items-center w-fit px-3 py-1 mb-4 bg-primary/10 text-xs font-semibold text-primary uppercase tracking-wider rounded-full">
                       {post.category}
                     </span>
                   )}
-                  {post.category && (
-                    <span className="text-xs text-muted-foreground">•</span>
-                  )}
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <Calendar size={12} />
-                    <span>{formatDate(post.publishedAt)}</span>
-                  </div>
-                  {(post.readingTime || post.readTime) && (
-                    <span className="text-xs text-muted-foreground">•</span>
-                  )}
-                  {(post.readingTime || post.readTime) && (
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                      <Clock size={12} />
-                      <span>{post.readingTime || post.readTime} min read</span>
+
+                  {/* Title */}
+                  <h2 className="text-2xl font-heading font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                    {post.title}
+                  </h2>
+
+                  {/* Meta Info */}
+                  <div className="flex items-center gap-3 mb-4 flex-wrap text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar size={14} />
+                      <span>{formatDate(post.publishedAt)}</span>
                     </div>
+                    {(post.readingTime || post.readTime) && (
+                      <>
+                        <span>•</span>
+                        <div className="flex items-center gap-1.5">
+                          <Clock size={14} />
+                          <span>{post.readingTime || post.readTime} min read</span>
+                        </div>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Excerpt */}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 line-clamp-3 flex-grow">
+                    {getExcerpt(post)}
+                  </p>
+
+                  {/* Read More Link */}
+                  {post?.slug?.current ? (
+                    <Link
+                      to={`/blog/${post.slug.current}`}
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:text-foreground transition-colors font-medium group/link"
+                    >
+                      <span>Read Full Article</span>
+                      <span className="group-hover/link:translate-x-1 transition-transform">→</span>
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                      <span>Read Full Article</span>
+                      <span>→</span>
+                    </span>
                   )}
                 </div>
-
-                <h2 className="text-xl font-heading font-bold text-foreground mb-3 hover:text-primary transition-colors">
-                  {post.title}
-                </h2>
-
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                  {getExcerpt(post)}
-                </p>
-
-                <div className="prose prose-invert prose-sm max-w-none">
-                  <p className="text-sm text-secondary-foreground leading-relaxed">
-                    {getPreview(post)}
-                  </p>
-                </div>
-
-                {post?.slug?.current ? (
-                  <Link
-                    to={`/blog/${post.slug.current}`}
-                    className="mt-4 inline-flex text-sm text-primary hover:text-foreground transition-colors font-medium"
-                  >
-                    Read More →
-                  </Link>
-                ) : (
-                  <span className="mt-4 inline-flex text-sm text-muted-foreground">
-                    Read More →
-                  </span>
-                )}
               </motion.article>
             ))}
           </div>

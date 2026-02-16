@@ -2,9 +2,15 @@ import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 // Initialize Sanity client with your credentials
+if (!import.meta.env.VITE_SANITY_PROJECT_ID || !import.meta.env.VITE_SANITY_DATASET) {
+  console.warn(
+    'Sanity env vars missing: set VITE_SANITY_PROJECT_ID and VITE_SANITY_DATASET.'
+  );
+}
+
 export const sanityClient = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'uhyy32de',
-  dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_DATASET,
   apiVersion: '2024-01-01',
   useCdn: true,
   token: import.meta.env.VITE_SANITY_API_TOKEN,
