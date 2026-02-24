@@ -11,7 +11,7 @@ const educationData = [
     color: "from-primary/20 to-primary/10",
   },
   {
-    period: "2019 – 2022",
+    period: "2020 – 2022",
     degree: "MSc in Biochemistry & Molecular Biology",
     institution: "University of Rajshahi, Rajshahi-6205",
     level: "Master's",
