@@ -46,12 +46,7 @@ const AboutSection = () => {
               Hello, I'm Ramim Hasan Naim, currently pursuing my MSc in Computational Biomedicine at the University of Southern Denmark (SDU). I enjoy applying computational tools, bioinformatics, and multi-omics analysis to understand complex biological problems and contribute to meaningful research.
             </p>
             <p className="text-secondary-foreground leading-relaxed text-base mt-4 text-left">
-              My research interests include{" "}
-              <strong className="text-foreground">
-                Functional Genomics and Translational Cancer Biology
-              </strong>
-              , with a focus on computational and integrative approaches to study molecular mechanisms and disease
-              . I have experience working with a variety of bioinformatics tools. I'm always eager to learn new methods and approaches to enhance my research. Previously, I worked as a{" "}
+              My research interests focus on <strong className="text-foreground">functional genomics and the regulatory mechanisms that control gene expression and cellular metabolism</strong>. I am particularly interested in using computational and integrative approaches to study molecular mechanisms and disease. I have experience working with a variety of bioinformatics tools. I'm always eager to learn new methods and approaches to enhance my research. Previously, I worked as a{" "}
               <strong className="text-foreground">
                 Research Assistant at the Protein and Nanomedicine Research Laboratory
               </strong>

@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 
 const researchInterests = [
   {
+    icon: Dna,
+    title: "Functional Genomics",
+    description:
+      "Integrating computational analysis of genomic and epigenomic data to study transcriptional regulation and gene regulatory networks, focusing on mechanisms controlling cell differentiation, metabolism, and disease.",
+  },
+  {
     icon: Atom,
     title: "Computational Proteomics",
     description:
@@ -14,12 +20,6 @@ const researchInterests = [
     title: "Systems Biology",
     description:
       "Integrating computational analysis of proteomics, transcriptomics, lipidomics, and metabolomics data to investigate lipid signaling and metabolic regulation in cellular function and disease.",
-  },
-  {
-    icon: Dna,
-    title: "Functional Genomics",
-    description:
-      "Integrating computational analysis of chromatin structure and transcriptional regulation to investigate how environmental and physiological signals influence gene expression and cellular function.",
   },
   {
     icon: FlaskConical,
