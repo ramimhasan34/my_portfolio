@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Microscope, Dna, Atom } from "lucide-react";
+import { Laptop, Microscope, Dna, FlaskConical } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const researchInterests = [
@@ -10,22 +10,22 @@ const researchInterests = [
       "Integrating computational analysis of genomic and epigenomic data to study transcriptional regulation and gene regulatory networks, focusing on mechanisms controlling cell differentiation, metabolism, and disease.",
   },
   {
-    icon: Atom,
-    title: "Computational Proteomics",
+    icon: Laptop,
+    title: "Computational Metabolomic",
     description:
-      "Applying bioinformatics and machine learning approaches to large-scale mass spectrometry–based proteomics data to investigate chromatin dynamics and disease-associated protein regulation.",
+      "Applying computational genomics and integrative multi-omics analysis to identify gene regulatory mechanisms and molecular pathways that contribute to metabolic diseases and therapeutic responses.",
   },
   {
     icon: Microscope,
-    title: "Systems Biology",
+    title: "Epigenomics & Metabolic Regulation",
     description:
-      "Integrating computational analysis of proteomics, transcriptomics, lipidomics, and metabolomics data to investigate lipid signaling and metabolic regulation in cellular function and disease.",
+      "Using computational and integrative analysis of noncoding RNAs, chromatin, and epigenomic data to study gene regulation, energy homeostasis, and disease mechanisms in obesity and type 2 diabetes.",
   },
   {
     icon: FlaskConical,
-    title: "Translational Cancer Biology",
+    title: "Hepatic Transcriptional Regulation",
     description:
-      "Using computational and integrative analysis to investigate molecular pathways and metabolic regulation in cancer cells, focusing on cell plasticity, aggressiveness, and responses to therapy.",
+      "Exploring how metabolic and environmental cues remodel chromatin and gene regulatory networks to control liver transcriptional plasticity and drive disease development and progression.",
   },
 ];
 
