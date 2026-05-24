@@ -9,14 +9,14 @@ const skillCategories = [
     tools: ["Python", "R"],
   },
   {
-    title: "Machine Learning",
-    icon: Brain,
-    tools: ["Weka"],
+    title: "Molecular Modeling & Visualization",
+    icon: Dna,
+    tools: ["Schrödinger Maestro", "PyMOL"],
   },
   {
-    title: "Molecular Visualization",
-    icon: Dna,
-    tools: ["PyMOL", "VMD"],
+    title: "Machine Learning",
+    icon: Brain,
+    tools: ["Weka", "KNIME"],
   },
 ];
 

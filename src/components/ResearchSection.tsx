@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 
 const researchInterests = [
   {
+    icon: Microscope,
+    title: "Proteomics",
+    description:
+      "Integrating computational and mass spectrometry-based proteomics to study protein expression, post-translational modifications, and signaling networks regulating cellular metabolism, differentiation, and disease.",
+  },
+  {
     icon: Dna,
     title: "Functional Genomics",
     description:
