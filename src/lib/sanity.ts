@@ -1,25 +1,44 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
-// Initialize Sanity client with your credentials
-if (!import.meta.env.VITE_SANITY_PROJECT_ID || !import.meta.env.VITE_SANITY_DATASET) {
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID;
+const dataset = import.meta.env.VITE_SANITY_DATASET;
+
+if (!projectId || !dataset) {
   console.warn(
     'Sanity env vars missing: set VITE_SANITY_PROJECT_ID and VITE_SANITY_DATASET.'
   );
 }
 
-export const sanityClient = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
-  dataset: import.meta.env.VITE_SANITY_DATASET,
-  apiVersion: '2024-01-01',
-  useCdn: true,
-  token: import.meta.env.VITE_SANITY_API_TOKEN,
-});
+const hasSanityConfig = Boolean(projectId && dataset);
+
+export const sanityClient = hasSanityConfig
+  ? createClient({
+      projectId,
+      dataset,
+      apiVersion: '2024-01-01',
+      useCdn: true,
+      token: import.meta.env.VITE_SANITY_API_TOKEN,
+    })
+  : null;
+
+const emptyImageUrlBuilder = {
+  width() {
+    return this;
+  },
+  height() {
+    return this;
+  },
+  url() {
+    return '';
+  },
+};
 
 // Image URL builder
-const builder = imageUrlBuilder(sanityClient);
+const builder = sanityClient ? imageUrlBuilder(sanityClient) : null;
 
-export const urlFor = (source: Record<string, unknown>) => builder.image(source);
+export const urlFor = (source: Record<string, unknown>) =>
+  builder ? builder.image(source) : (emptyImageUrlBuilder as never);
 
 // Queries
 export const sanityQueries = {
