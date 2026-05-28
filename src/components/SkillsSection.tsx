@@ -9,9 +9,9 @@ const skillCategories = [
     tools: ["Python", "R"],
   },
   {
-    title: "Molecular Modeling & Visualization",
+    title: "Modeling & Visualization",
     icon: Dna,
-    tools: ["Schrödinger Maestro", "PyMOL"],
+    tools: ["Maestro", "PyMOL"],
   },
   {
     title: "Machine Learning",

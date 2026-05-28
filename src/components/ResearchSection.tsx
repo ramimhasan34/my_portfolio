@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Laptop, Microscope, Dna, FlaskConical } from "lucide-react";
+import { Laptop, Microscope, Dna } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const researchInterests = [
@@ -11,9 +11,9 @@ const researchInterests = [
   },
   {
     icon: Dna,
-    title: "Functional Genomics",
+    title: "Hepatic Transcriptional Regulation",
     description:
-      "Integrating computational analysis of genomic and epigenomic data to study transcriptional regulation and gene regulatory networks, focusing on mechanisms controlling cell differentiation, metabolism, and disease.",
+      "Exploring how metabolic and environmental cues remodel chromatin and gene regulatory networks to control liver transcriptional plasticity and drive disease development and progression.",
   },
   {
     icon: Laptop,
@@ -26,12 +26,6 @@ const researchInterests = [
     title: "Epigenomics & Metabolic Regulation",
     description:
       "Using computational and integrative analysis of noncoding RNAs, chromatin, and epigenomic data to study gene regulation, energy homeostasis, and disease mechanisms in obesity and type 2 diabetes.",
-  },
-  {
-    icon: FlaskConical,
-    title: "Hepatic Transcriptional Regulation",
-    description:
-      "Exploring how metabolic and environmental cues remodel chromatin and gene regulatory networks to control liver transcriptional plasticity and drive disease development and progression.",
   },
 ];
 

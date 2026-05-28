@@ -25,7 +25,7 @@ const AboutSection = () => {
               <div className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-3xl overflow-hidden border-2 border-primary/40 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none z-10" />
                 <img
-                  src="/img_1.jpeg"
+                  src="/image.jpg"
                   alt="Ramim Hasan Naim"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
