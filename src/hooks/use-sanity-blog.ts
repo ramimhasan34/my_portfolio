@@ -8,6 +8,13 @@ export const useSanityBlogPosts = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      if (!sanityClient) {
+        setPosts([]);
+        setError(null);
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
         const query = sanityQueries.getAllBlogPosts;
@@ -34,9 +41,20 @@ export const useSanityBlogPostBySlug = (slug: string) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug) {
+      setPost(null);
+      setLoading(false);
+      return;
+    }
 
     const fetchPost = async () => {
+      if (!sanityClient) {
+        setPost(null);
+        setError(null);
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
         const query = sanityQueries.getBlogPostBySlug(slug);
@@ -63,9 +81,20 @@ export const useSanityBlogPostsByCategory = (category: string) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!category) return;
+    if (!category) {
+      setPosts([]);
+      setLoading(false);
+      return;
+    }
 
     const fetchPosts = async () => {
+      if (!sanityClient) {
+        setPosts([]);
+        setError(null);
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
         const query = sanityQueries.getBlogPostsByCategory(category);

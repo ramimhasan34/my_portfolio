@@ -6,10 +6,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSanityBlogPostBySlug } from "@/hooks/use-sanity-blog";
 import { urlFor } from "@/lib/sanity";
+import { fallbackBlogPosts } from "@/lib/fallback-blog-posts";
 
 const BlogDetails = () => {
   const { slug } = useParams();
   const { post, loading, error } = useSanityBlogPostBySlug(slug || "");
+  const fallbackPost = fallbackBlogPosts.find(
+    (item) => item.slug.current === slug
+  );
+  const displayPost = post || fallbackPost;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,14 +48,14 @@ const BlogDetails = () => {
   };
 
   const renderBody = () => {
-    const bodyText = getPlainText(post?.body);
-    const source = bodyText || post?.content || "";
+    const bodyText = getPlainText(displayPost?.body);
+    const source = bodyText || displayPost?.content || "";
     if (!source) {
       return null;
     }
 
     return source.split("\n\n").map((paragraph, index) => (
-      <p key={`${post?._id || "post"}-${index}`} className="mb-4">
+      <p key={`${displayPost?._id || "post"}-${index}`} className="mb-4">
         {paragraph}
       </p>
     ));
@@ -73,15 +78,15 @@ const BlogDetails = () => {
           {loading && (
             <p className="text-sm text-muted-foreground">Loading post...</p>
           )}
-          {error && (
+          {error && !displayPost && (
             <p className="text-sm text-destructive">Failed to load post.</p>
           )}
 
-          {!loading && !post && !error && (
+          {!loading && !displayPost && !error && (
             <p className="text-sm text-muted-foreground">Post not found.</p>
           )}
 
-          {post && (
+          {displayPost && (
             <motion.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -89,39 +94,41 @@ const BlogDetails = () => {
               className="card-glass rounded-xl p-8"
             >
               <div className="flex items-center gap-3 mb-4 flex-wrap">
-                {post?.category && (
+                {displayPost?.category && (
                   <span className="text-xs font-semibold text-primary uppercase tracking-wider">
-                    {post.category}
+                    {displayPost.category}
                   </span>
                 )}
-                {post?.category && (
+                {displayPost?.category && (
                   <span className="text-xs text-muted-foreground">•</span>
                 )}
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <Calendar size={12} />
-                  <span>{formatDate(post.publishedAt)}</span>
+                  <span>{formatDate(displayPost.publishedAt)}</span>
                 </div>
-                {post?.readingTime && (
+                {(displayPost?.readingTime || displayPost?.readTime) && (
                   <span className="text-xs text-muted-foreground">•</span>
                 )}
-                {post?.readingTime && (
+                {(displayPost?.readingTime || displayPost?.readTime) && (
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Clock size={12} />
-                    <span>{post.readingTime} min read</span>
+                    <span>
+                      {displayPost.readingTime || displayPost.readTime} min read
+                    </span>
                   </div>
                 )}
               </div>
 
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                {post.title}
+                {displayPost.title}
               </h1>
 
               {/* Featured Image */}
-              {post.image && (
+              {displayPost.image && (
                 <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg mb-8">
                   <img
-                    src={urlFor(post.image).width(1200).height(600).url()}
-                    alt={post.title}
+                    src={urlFor(displayPost.image).width(1200).height(600).url()}
+                    alt={displayPost.title}
                     className="w-full h-full object-cover"
                   />
                 </div>

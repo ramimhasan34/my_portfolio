@@ -10,15 +10,15 @@ if (!projectId || !dataset) {
   );
 }
 
-const hasSanityConfig = Boolean(projectId && dataset);
+const allowBrowserSanity =
+  import.meta.env.VITE_ENABLE_SANITY_BROWSER === 'true' && Boolean(projectId && dataset);
 
-export const sanityClient = hasSanityConfig
+export const sanityClient = allowBrowserSanity
   ? createClient({
       projectId,
       dataset,
       apiVersion: '2024-01-01',
       useCdn: true,
-      token: import.meta.env.VITE_SANITY_API_TOKEN,
     })
   : null;
 
